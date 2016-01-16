@@ -10,6 +10,10 @@
 
 #import "Kitchen.h"
 #import "Pizza.h"
+#import "Manager.h"
+#import "GoodManager.h"
+#import "InputCollector.h"
+
 
 int main(int argc, const char * argv[])
 
@@ -17,35 +21,73 @@ int main(int argc, const char * argv[])
 
     @autoreleasepool {
         
-        NSLog(@"Please pick your pizza size and toppings (separate every topping by a comma(,):");
+        InputCollector *inputCollector = [InputCollector new];
+        NSString *userSelectedManager = [inputCollector inputPrompt:@"Ask for a manager: No One//George//John//Random \n>"];
+        Kitchen *kitchen = [Kitchen new];
+        Manager *badManager = [Manager new];
+        GoodManager *goodManager = [GoodManager new];
+        badManager.name = @"George";
+        goodManager.name = @"John";
+        id delegatedManager;
         
-        Kitchen *restaurantKitchen = [Kitchen new];
+        if ([[userSelectedManager lowercaseString] isEqualToString:@"no one"]) {
+        }
         
+        else if ([[userSelectedManager lowercaseString] isEqualToString:@"john"]) {
+            delegatedManager = goodManager;
+        }
+        else if ([[userSelectedManager lowercaseString] isEqualToString:@"George"]) {
+            delegatedManager = badManager;
+        }
+        else if ([[userSelectedManager lowercaseString] isEqualToString:@"random"]) {
+            
+            id delegatedManager;
+            if (arc4random_uniform(2)==0){
+                delegatedManager = badManager;
+            }
+            else {
+                delegatedManager = goodManager;
+            }
+            
+            kitchen.delegate = delegatedManager;
+        }
+        
+        NSLog(@"Your Manager Today is going to be %@", goodManager.name);
+        NSLog(@"Please pick your pizza size and toppings:");
+
         while (TRUE) {
             // Loop forever
             
+            //User input
             NSLog(@"> ");
             char str[100];
             fgets (str, 100, stdin);
             
             NSString *inputString = [[NSString alloc] initWithUTF8String:str];
-            inputString = [inputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             
-            NSArray *components = [inputString componentsSeparatedByString:@" "];
-            NSString *size = [components objectAtIndex:0];
+            
+            //Parse
+            inputString = [inputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            NSMutableArray *components = [[inputString componentsSeparatedByString:@" "] mutableCopy];
+            NSString *size = components[0];
+            
+            [Pizza convertStringToEnum:size];
+            
+             [components removeObjectAtIndex:0];
             
             NSLog(@"You've ordered %@", inputString);
             NSString *parsed = [[NSString alloc] init];
-            int i = 0;
-            for (NSString *p in components) {
-                if (i !=0 ) {
-                parsed = [parsed stringByAppendingString:p];
-                }
-                i++;
-                NSLog(@"p = %@", p);
-
+            for (NSString *s in components) {
+                //NSLog(@"s = %@", s);
+                parsed = [[parsed stringByAppendingString:s] stringByAppendingString:@" "] ;
             }
-            NSLog(@" parsed = %@", parsed);
+            
+            parsed = [parsed stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+            //NSLog(@"parsed = %@", parsed);
+            
+            
+            //Parsed
             NSArray *toppings = [parsed componentsSeparatedByString:@","];
             
             NSLog(@"Size: %@", size);
@@ -53,13 +95,9 @@ int main(int argc, const char * argv[])
             
             PizzaSize pizzaSize = [Pizza convertStringToEnum:size];
             
-            Pizza *newOrder = [restaurantKitchen makePizzaWithSize:pizzaSize toppings:toppings];
+            Pizza *newOrder = [kitchen makePizzaWithSize:pizzaSize toppings:toppings];
             
-            NSLog(@"Here is your Pizza: %@", newOrder);
-//            // Take the first word of the command as the size, and the rest as the toppings
-//            NSArray *commandWords = [inputString componentsSeparatedByString:@" "];
-//            
-//            // And then send some message to the kitchen...
+            NSLog(@"%@", newOrder);
         }
 
     }

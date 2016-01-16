@@ -6,12 +6,14 @@
 //  Copyright © 2016 Lighthouse Labs. All rights reserved.
 //
 
+
+
 #import "Pizza.h"
 
 @interface Pizza ()
 
-@property(nonatomic, assign)PizzaSize *pizzaSize;
-@property(nonatomic, strong)NSArray *toppings;
+@property (nonatomic, assign) PizzaSize pizzaSize;
+@property (nonatomic, strong) NSArray *toppings;
 
 @end
 
@@ -20,14 +22,14 @@
 -(instancetype)initWithPizzaSize:(PizzaSize)pizzaSize toppings:(NSArray *)toppings {
     self = [super init];
     if (self) {
-        _pizzaSize = pizzaSize;
+        _size = &pizzaSize;
         _toppings = toppings;
     }
     return self;
 }
 
-//-(PizzaSize)sizeofPizza {
-//    return self.pizzaSize;
+//-(NSString *)sizeofPizza {
+//    return *(self.size);
 //}
 
 -(NSArray *)pizzaTopping {

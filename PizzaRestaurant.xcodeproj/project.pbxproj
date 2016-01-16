@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0AE831BA1C4962E400081BDE /* Pizza.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE831B91C4962E400081BDE /* Pizza.m */; };
+		0AE831D41C49B00B00081BDE /* Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE831D31C49B00B00081BDE /* Manager.m */; };
+		0AE831D71C49CFC000081BDE /* GoodManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE831D61C49CFC000081BDE /* GoodManager.m */; };
+		0AE831DA1C49D70F00081BDE /* InputCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE831D91C49D70F00081BDE /* InputCollector.m */; };
 		6001EC81197B4EC300F97011 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6001EC80197B4EC300F97011 /* Foundation.framework */; };
 		6001EC84197B4EC300F97011 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6001EC83197B4EC300F97011 /* main.m */; };
 		6001EC90197B502F00F97011 /* Kitchen.m in Sources */ = {isa = PBXBuildFile; fileRef = 6001EC8F197B502F00F97011 /* Kitchen.m */; };
@@ -28,6 +31,13 @@
 /* Begin PBXFileReference section */
 		0AE831B81C4962E400081BDE /* Pizza.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pizza.h; sourceTree = "<group>"; };
 		0AE831B91C4962E400081BDE /* Pizza.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pizza.m; sourceTree = "<group>"; };
+		0AE831BE1C498EF800081BDE /* kitchenDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kitchenDelegate.h; sourceTree = "<group>"; };
+		0AE831D21C49B00B00081BDE /* Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Manager.h; sourceTree = "<group>"; };
+		0AE831D31C49B00B00081BDE /* Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Manager.m; sourceTree = "<group>"; };
+		0AE831D51C49CFBF00081BDE /* GoodManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodManager.h; sourceTree = "<group>"; };
+		0AE831D61C49CFC000081BDE /* GoodManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodManager.m; sourceTree = "<group>"; };
+		0AE831D81C49D70F00081BDE /* InputCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputCollector.h; sourceTree = "<group>"; };
+		0AE831D91C49D70F00081BDE /* InputCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputCollector.m; sourceTree = "<group>"; };
 		6001EC7D197B4EC300F97011 /* PizzaRestaurant */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PizzaRestaurant; sourceTree = BUILT_PRODUCTS_DIR; };
 		6001EC80197B4EC300F97011 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6001EC83197B4EC300F97011 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -77,8 +87,15 @@
 			isa = PBXGroup;
 			children = (
 				6001EC83197B4EC300F97011 /* main.m */,
+				0AE831D81C49D70F00081BDE /* InputCollector.h */,
+				0AE831D91C49D70F00081BDE /* InputCollector.m */,
+				0AE831BE1C498EF800081BDE /* kitchenDelegate.h */,
 				0AE831B81C4962E400081BDE /* Pizza.h */,
 				0AE831B91C4962E400081BDE /* Pizza.m */,
+				0AE831D51C49CFBF00081BDE /* GoodManager.h */,
+				0AE831D61C49CFC000081BDE /* GoodManager.m */,
+				0AE831D21C49B00B00081BDE /* Manager.h */,
+				0AE831D31C49B00B00081BDE /* Manager.m */,
 				6001EC8E197B502F00F97011 /* Kitchen.h */,
 				6001EC8F197B502F00F97011 /* Kitchen.m */,
 				6001EC85197B4EC300F97011 /* Supporting Files */,
@@ -145,9 +162,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AE831DA1C49D70F00081BDE /* InputCollector.m in Sources */,
 				0AE831BA1C4962E400081BDE /* Pizza.m in Sources */,
 				6001EC90197B502F00F97011 /* Kitchen.m in Sources */,
 				6001EC84197B4EC300F97011 /* main.m in Sources */,
+				0AE831D71C49CFC000081BDE /* GoodManager.m in Sources */,
+				0AE831D41C49B00B00081BDE /* Manager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
